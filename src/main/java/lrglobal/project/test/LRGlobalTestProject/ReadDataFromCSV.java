@@ -66,7 +66,8 @@ public class ReadDataFromCSV {
 				} else {
 					hedgeFund.setRanking(Integer.parseInt(csvRecord.get(7)));
 				}
-
+				String vv=csvRecord.get(8);
+				
 				if (csvRecord.get(8).equals("")) {
 					hedgeFund.setChangInshare(null);
 				} else {
