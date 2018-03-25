@@ -11,9 +11,12 @@
     <property name="connection.password"></property>
     <property name="show_sql">true</property>
     <property name="hibernate.hbm2ddl.auto">update</property>  
+   
    <mapping class="lrglobal.project.test.Model.TestTable" />
    
    <mapping class="lrglobal.project.test.Model.HedgeFund" />
+   
+   <mapping class="lrglobal.project.test.Model.SellSummaryHF"/>
      
   </session-factory>
 </hibernate-configuration>

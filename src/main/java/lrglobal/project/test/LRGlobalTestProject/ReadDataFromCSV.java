@@ -18,38 +18,39 @@ import lrglobal.project.test.Model.HedgeFund;
 
 public class ReadDataFromCSV {
 
-	// static Logger logger = Logger.getLogger(ReadDataFromCSV.class);
 
 	public ArrayList<HedgeFund> getAllData(String fileNameDefined) {
 
+		//declaring a list to store all the records from csv file
 		ArrayList<HedgeFund> result = new ArrayList<HedgeFund>();
-		// -define .csv file in app
-		// String fileNameDefined = "HedgeFund.csv";
-		// -File class needed to turn stringName to actual file
-		// File file = new File(fileNameDefined);
 		String thisLine = null;
 		try {
-			// -read from filePooped with Scanner class
-			// Scanner sc= new Scanner(System.in);
-			// String line = "";
-			// int lineNumber=sc.nextInt();
+			//open a reader to read the csv file  
 			Reader br = new BufferedReader(new InputStreamReader(new FileInputStream(fileNameDefined), "utf-8"));
 			// Files.newBufferedReader(Paths.get(fileNameDefined));
+			//csv parser take all the records by parsing from the reader
 			CSVParser csvParser = new CSVParser(br, CSVFormat.DEFAULT);
+			//Now data is seprated as a set of records 
 			Iterable<CSVRecord> csvRecords = csvParser.getRecords();
 			int i = 0;
+			//reading data AS records
 			for (CSVRecord csvRecord : csvRecords) {
 				if (i == 0) {
+					//first row is the tickers thats why we skip it
 					i++;
 					continue;
 				}
+				//create an object to store records as a table row value
 				HedgeFund hedgeFund = new HedgeFund();
 
+				// assign all the values of the hedge fund entity table 
 				hedgeFund.setStockName(csvRecord.get(0));
 				hedgeFund.setSymbol(csvRecord.get(1));
 				hedgeFund.setType(csvRecord.get(2));
 				hedgeFund.setShareHeld(Double.parseDouble(csvRecord.get(3)));
 				hedgeFund.setMarketValue(Double.parseDouble(csvRecord.get(4)));
+				// null cheking for all the values which have null constraint in the database 
+				// if we dont check it it will give null pointer exception if any of the data is null
 				if (csvRecord.get(5).equals("")) {
 					hedgeFund.setPer_Portfolio(null);
 				} else {
@@ -110,11 +111,8 @@ public class ReadDataFromCSV {
 				hedgeFund.setSource_date(csvRecord.get(15));
 				hedgeFund.setNameOfFund(csvRecord.get(16));
 
+				// add one hedge fund row into the arraylist.
 				result.add(hedgeFund);
-				// read single line, put in string
-				// String data = csvRecord.get(1);
-				// result.add(data);
-
 			}
 			// after loop, close scanner
 			br.close();
@@ -123,6 +121,7 @@ public class ReadDataFromCSV {
 
 			System.out.println("exception at reading: " + e);
 		}
+		//return the result
 		return result;
 
 	}

@@ -1,13 +1,18 @@
 package lrglobal.project.test.Model;
 
+import java.util.Comparator;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
+//@Table(name="hedgefund2",uniqueConstraints={
+//@UniqueConstraint(columnNames={"Symbol", "source_date","Name_of_Fund"})})
 @Table(name="hedgefund2")
 public class HedgeFund {
 	
@@ -68,7 +73,8 @@ public class HedgeFund {
 	@Column(name="Name_of_Fund")
 	private String nameOfFund;
 
-	
+	@Column(name="Net_Buy_Sell")
+	private Double net_buy_sell;
 	
 	public long getId() {
 		return id;
@@ -213,6 +219,31 @@ public class HedgeFund {
 	public void setNameOfFund(String nameOfFund) {
 		this.nameOfFund = nameOfFund;
 	}
+	
+	
+    public Double getNet_buy_sell() {
+		return net_buy_sell;
+	}
+
+	public void setNet_buy_sell(Double net_buy_sell) {
+		this.net_buy_sell = net_buy_sell;
+	}
+
+
+
+
+	public static Comparator<HedgeFund> HedgeFundComparator = new Comparator<HedgeFund>() {
+
+	public int compare(HedgeFund s1, HedgeFund s2) {
+	   String HedgeFund1 = s1.getStockName().toUpperCase();
+	   String HedgeFund2 = s2.getStockName().toUpperCase();
+
+	   //ascending order
+	   return HedgeFund1.compareTo(HedgeFund2);
+
+	   //descending order
+	   //return StudentName2.compareTo(StudentName1);
+    }};
 
 	@Override
 	public String toString() {
@@ -221,16 +252,16 @@ public class HedgeFund {
 				+ ", prev_perPortfolio=" + prev_perPortfolio + ", ranking=" + ranking + ", changInshare=" + changInshare
 				+ ", perChange=" + perChange + ", changeType=" + changeType + ", ownerShip=" + ownerShip
 				+ ", qtrFirstOwned=" + qtrFirstOwned + ", sector=" + sector + ", source_type=" + source_type
-				+ ", source_date=" + source_date + ", nameOfFund=" + nameOfFund + ", getId()=" + getId()
-				+ ", getStockName()=" + getStockName() + ", getSymbol()=" + getSymbol() + ", getType()=" + getType()
-				+ ", getShareHeld()=" + getShareHeld() + ", getMarketValue()=" + getMarketValue()
-				+ ", getPer_Portfolio()=" + getPer_Portfolio() + ", getPrev_perPortfolio()=" + getPrev_perPortfolio()
-				+ ", getRanking()=" + getRanking() + ", getChangInshare()=" + getChangInshare() + ", getPerChange()="
-				+ getPerChange() + ", getChangeType()=" + getChangeType() + ", getOwnerShip()=" + getOwnerShip()
-				+ ", getQtrFirstOwned()=" + getQtrFirstOwned() + ", getSector()=" + getSector() + ", getSource_type()="
-				+ getSource_type() + ", getSource_date()=" + getSource_date() + ", getNameOfFund()=" + getNameOfFund()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
+				+ ", source_date=" + source_date + ", nameOfFund=" + nameOfFund + ", net_buy_sell=" + net_buy_sell
+				+ ", getId()=" + getId() + ", getStockName()=" + getStockName() + ", getSymbol()=" + getSymbol()
+				+ ", getType()=" + getType() + ", getShareHeld()=" + getShareHeld() + ", getMarketValue()="
+				+ getMarketValue() + ", getPer_Portfolio()=" + getPer_Portfolio() + ", getPrev_perPortfolio()="
+				+ getPrev_perPortfolio() + ", getRanking()=" + getRanking() + ", getChangInshare()=" + getChangInshare()
+				+ ", getPerChange()=" + getPerChange() + ", getChangeType()=" + getChangeType() + ", getOwnerShip()="
+				+ getOwnerShip() + ", getQtrFirstOwned()=" + getQtrFirstOwned() + ", getSector()=" + getSector()
+				+ ", getSource_type()=" + getSource_type() + ", getSource_date()=" + getSource_date()
+				+ ", getNameOfFund()=" + getNameOfFund() + ", getNet_buy_sell()=" + getNet_buy_sell() + ", getClass()="
+				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
 	
 	
