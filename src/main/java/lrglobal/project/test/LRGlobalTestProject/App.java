@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 import lrglobal.project.test.Model.HedgeFundManager;
+import lrglobal.project.test.Model.SectorSumamryManager;
 import lrglobal.project.test.Model.SellSummaryHFManager;
 import lrglobal.project.test.Model.TestTableManager;
 
@@ -23,9 +24,9 @@ public class App
         System.out.println("Enter Operation Name: ");
         String command= input.next();
         /*
-         * This i9s the code snipet of operation sets
+         * This is the code snippet of operation sets
          * It will take one input at a time till now and complete the operation
-         * After defining the whole work process there would be huge chnage of the file
+         * After defining the whole work process there would be huge change of the file
          * Till now this is only for test purposes 
          */
         if(command.equals("hfi")){
@@ -45,6 +46,12 @@ public class App
         	sellSummaryHFManager.setup();
         	sellSummaryHFManager.Insert();
         	sellSummaryHFManager.exit();
+        }        
+        else if(command.equalsIgnoreCase("ssi")){
+        	SectorSumamryManager sectorSumamryManager=new SectorSumamryManager();
+        	sectorSumamryManager.setup();
+        	sectorSumamryManager.Insert();
+        	sectorSumamryManager.exit();
         }
         
         else{
