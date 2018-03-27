@@ -35,22 +35,49 @@ public class App
             hedgeManager.create();
             hedgeManager.exit();
         }
+        /*
+         * update hedge fund table by adding net buy sell column
+         */
         else if(command.equalsIgnoreCase("nbsc")){
         	HedgeFundManager hedgeManager=new HedgeFundManager();
             hedgeManager.setup();
             hedgeManager.addNetSell();
             hedgeManager.exit();
         }
+        /*
+         * inserting data in symbol summary table =sell summary HF
+         */
         else if(command.equalsIgnoreCase("sshf")){
         	SellSummaryHFManager sellSummaryHFManager=new SellSummaryHFManager();
         	sellSummaryHFManager.setup();
         	sellSummaryHFManager.Insert();
         	sellSummaryHFManager.exit();
         }        
+        /*
+         * Inserting data in sector summary table
+         */
         else if(command.equalsIgnoreCase("ssi")){
         	SectorSumamryManager sectorSumamryManager=new SectorSumamryManager();
         	sectorSumamryManager.setup();
         	sectorSumamryManager.Insert();
+        	sectorSumamryManager.exit();
+        }
+        /*
+         * showing top net buy sell value in symbol summary=sell summary HF
+         */
+        else if(command.equalsIgnoreCase("tnbsv")){
+        	SellSummaryHFManager sellSummaryHFManager=new SellSummaryHFManager();
+        	sellSummaryHFManager.setup();
+        	sellSummaryHFManager.topBuySellValues();
+        	sellSummaryHFManager.exit();
+        }
+        /*
+         * for showing top net buy sell value in sector summary
+         */
+        else if(command.equalsIgnoreCase("tnbsvss")){
+        	SectorSumamryManager sectorSumamryManager=new SectorSumamryManager();
+        	sectorSumamryManager.setup();
+        	sectorSumamryManager.topBuySellValuesSector();
         	sectorSumamryManager.exit();
         }
         

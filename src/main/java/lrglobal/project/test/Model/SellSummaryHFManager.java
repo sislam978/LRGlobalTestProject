@@ -1,5 +1,8 @@
 package lrglobal.project.test.Model;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +16,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.NativeQuery;
-
+import lrglobal.project.test.Model.HedgeFund;
 import com.mysql.jdbc.Connection;
 
 import lrglobal.project.test.LRGlobalTestProject.ReadDataFromCSV;
@@ -64,6 +67,35 @@ public class SellSummaryHFManager {
     		System.out.println(e);
     	}
     	
+    	session.getTransaction().commit();
+    	session.close();
+    }
+    
+    public void topBuySellValues(){
+    	Session session= sessionfactory.openSession();
+    	session.beginTransaction();
+    	/*
+    	 * query for extracting top 10 sell values from the Symbol summary table
+    	 */
+    	Query query=session.getNamedQuery("top_netbuy_sell_symbolSummary");
+    	// returned list value from the table 
+    	List<SellSummaryHF> rsult= query.getResultList();
+    	
+    	//write the resulted list into a text file
+    	File fileName= new File("top_Symbol_NetValues.txt");
+    	try{
+    		FileWriter fw=new FileWriter(fileName);
+    		BufferedWriter output=new BufferedWriter(fw);
+    		
+    		for(int i=0;i<rsult.size();i++){
+    			//line by line write
+    			output.write(rsult.get(i).toString());
+    			output.newLine();
+    		}
+    		output.close();
+    	}catch(Exception e){
+    		System.out.println("The Given Exception is: "+e);
+    	}
     	session.getTransaction().commit();
     	session.close();
     }

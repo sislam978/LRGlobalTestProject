@@ -17,6 +17,9 @@
    <mapping class="lrglobal.project.test.Model.HedgeFund" />
    
    <mapping class="lrglobal.project.test.Model.SellSummaryHF"/>
+   
+   <mapping class="lrglobal.project.test.Model.SectorSummary"/>
+   
      
   </session-factory>
 </hibernate-configuration>

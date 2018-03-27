@@ -1,5 +1,10 @@
 package lrglobal.project.test.Model;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.util.List;
+
 import javax.persistence.Query;
 
 import org.hibernate.Session;
@@ -51,6 +56,36 @@ public class SectorSumamryManager {
     	session.getTransaction().commit();
     	session.close();
     }
+    
+    public void topBuySellValuesSector(){
+    	Session session= sessionfactory.openSession();
+    	session.beginTransaction();
+    	
+    	/*
+    	 * query for extracting top 10 sell values from the sector summary table
+    	 */
+    	Query query=session.getNamedQuery("top_netbuysell_sectorsummary");
+    	// returned list value from the table 
+    	List<SectorSummary> rsult= query.getResultList();
+    	//write the resulted list into a text file
+    	File fileName= new File("top_Sector_NetValues.txt");
+    	try{
+    		FileWriter fw=new FileWriter(fileName);
+    		BufferedWriter output=new BufferedWriter(fw);
+    		
+    		for(int i=0;i<rsult.size();i++){
+    			//line by line write
+    			output.write(rsult.get(i).toString());
+    			output.newLine();
+    		}
+    		output.close();
+    	}catch(Exception e){
+    		System.out.println("The Given Exception is: "+e);
+    	}
+    	session.getTransaction().commit();
+    	session.close();
+    }
+ 
  
     public void read() {
         // code to get a Data

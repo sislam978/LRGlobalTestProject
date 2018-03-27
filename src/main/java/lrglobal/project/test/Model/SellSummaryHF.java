@@ -13,14 +13,14 @@ import javax.persistence.NamedNativeQueries;
  * Calling process of a procedure from sql database to java 
  * */
  
-//@NamedNativeQueries({
-//	@NamedNativeQuery(
-//			name="insert_hedge_sell_record",
-//			query ="CALL insert_hedge_sell_record()",
-//			hints=	@javax.persistence.QueryHint(name = "org.hibernate.callable", value = "true"),
-//			resultClass=SellSummaryHF.class
-//			)	
-//})
+@NamedNativeQueries({
+	@NamedNativeQuery(
+			name="top_netbuy_sell_symbolSummary",
+			query ="CALL top_netbuy_sell_symbolSummary()",
+			hints=	@javax.persistence.QueryHint(name = "org.hibernate.callable", value = "true"),
+			resultClass=SellSummaryHF.class
+			)	
+})
 @Entity
 @Table(name="sell_summeryhf")
 public class SellSummaryHF {
@@ -50,6 +50,18 @@ public class SellSummaryHF {
 	
 	@Column(name="Symbol")
 	private String symbol;
+	
+	@Column(name="created_by")
+	private Integer created_by;
+	
+	@Column(name="created_on")
+	private String created_on;
+	
+	@Column(name="deleted_by")
+	private Integer deleted_by;
+	
+	@Column(name="deleted_on")
+	private String deleted_on;
 	
 	public long getId() {
 		return id;
@@ -116,16 +128,46 @@ public class SellSummaryHF {
 	public void setSymbol(String symbol) {
 		this.symbol = symbol;
 	}
+	
+	
+
+	public Integer getCreated_by() {
+		return created_by;
+	}
+
+	public void setCreated_by(Integer created_by) {
+		this.created_by = created_by;
+	}
+
+	public String getCreated_on() {
+		return created_on;
+	}
+
+	public void setCreated_on(String created_on) {
+		this.created_on = created_on;
+	}
+
+	public Integer getDeleted_by() {
+		return deleted_by;
+	}
+
+	public void setDeleted_by(Integer deleted_by) {
+		this.deleted_by = deleted_by;
+	}
+
+	public String getDeleted_on() {
+		return deleted_on;
+	}
+
+	public void setDeleted_on(String deleted_on) {
+		this.deleted_on = deleted_on;
+	}
 
 	@Override
 	public String toString() {
-		return "SellSummaryHF [id=" + id + ", rowLabels=" + rowLabels + ", Market_Value=" + Market_Value
-				+ ", share_Held=" + share_Held + ", changeInShare=" + changeInShare + ", net_buy_sell=" + net_buy_sell
-				+ ", source_date=" + source_date + ", symbol=" + symbol + ", getId()=" + getId() + ", getRowLabels()="
-				+ getRowLabels() + ", getMarket_Value()=" + getMarket_Value() + ", getShare_Held()=" + getShare_Held()
-				+ ", getChangeInShare()=" + getChangeInShare() + ", getNet_buy_sell()=" + getNet_buy_sell()
-				+ ", getSource_date()=" + getSource_date() + ", getSymbol()=" + getSymbol() + ", getClass()="
-				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+		return "SellSummaryHF [rowLabels=" + rowLabels + ", Market_Value=" + Market_Value + ", share_Held=" + share_Held
+				+ ", changeInShare=" + changeInShare + ", net_buy_sell=" + net_buy_sell + ", source_date=" + source_date
+				+ ", symbol=" + symbol + "]";
 	}
 	
 	
