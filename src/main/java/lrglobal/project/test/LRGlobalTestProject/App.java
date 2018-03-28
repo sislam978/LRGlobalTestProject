@@ -18,7 +18,9 @@ import lrglobal.project.test.Model.TestTableManager;
  */
 public class App 
 {
-	
+	/*
+	 * date formation method whatever the date is it will convert to MySQL default date format
+	 */
 	public String dateFormation(String toformat){
 		
 		SimpleDateFormat input_format= new SimpleDateFormat("mm/dd/yyyy");

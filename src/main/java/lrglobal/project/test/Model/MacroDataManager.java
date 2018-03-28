@@ -53,7 +53,10 @@ public class MacroDataManager {
     	Collections.sort(rslt, MacroData.MacroComparator);
     	for(int i=0;i<rslt.size();i++){
     		MacroData md=rslt.get(i);
-    		
+    		/*
+    		 * checking the unique constraints of the macro data table. If there will any duplicate data then the query will return atleast 1 value.
+    		 * from which we can determine the data is duplicate or not
+    		 */
     		String SQL_QUERY="select u from MacroData u where u.macro_name='" + rslt.get(i).getMacro_name() + 
     				"' and u.date='"+rslt.get(i).getDate()+"'";
 
