@@ -68,7 +68,7 @@ public class SectorSumamryManager {
     	// returned list value from the table 
     	List<SectorSummary> rsult= query.getResultList();
     	//write the resulted list into a text file
-    	File fileName= new File("top_Sector_NetValues.txt");
+    	File fileName= new File("generate_files\\top_Sector_NetValues.txt");
     	try{
     		FileWriter fw=new FileWriter(fileName);
     		BufferedWriter output=new BufferedWriter(fw);
