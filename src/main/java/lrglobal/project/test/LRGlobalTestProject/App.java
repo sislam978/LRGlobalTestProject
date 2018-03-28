@@ -19,7 +19,8 @@ import lrglobal.project.test.Model.TestTableManager;
 public class App 
 {
 	/*
-	 * date formation method whatever the date is it will convert to MySQL default date format
+	 * date formation method whatever the date is it will
+	 * shopan vaia branchs convert to MySQL default date format
 	 */
 	public String dateFormation(String toformat){
 		
