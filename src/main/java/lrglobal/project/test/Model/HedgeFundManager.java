@@ -41,13 +41,13 @@ public class HedgeFundManager {
     	
     }
     
-    public void create() {
+    public void create(String fileName) {
         // code to save a Data
     	// Before that I have to Read an excel file and take the inputs from the csvfile.
     	Session session = sessionfactory.openSession();
     	session.beginTransaction();
     	ReadDataFromCSV readCSV=new ReadDataFromCSV();
-    	String fileName="HedgeFund.csv";
+    	//String fileName="HedgeFund.csv";
     	ArrayList<HedgeFund> rr=new ArrayList<HedgeFund>();
     	//call the csv file read method and rr store the list of data 
     	rr=readCSV.getAllData(fileName);

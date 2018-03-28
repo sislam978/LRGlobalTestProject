@@ -20,6 +20,8 @@
    
    <mapping class="lrglobal.project.test.Model.SectorSummary"/>
    
+    <mapping class="lrglobal.project.test.Model.MacroData"/>
+   
      
   </session-factory>
 </hibernate-configuration>

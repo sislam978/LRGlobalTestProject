@@ -7,7 +7,9 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -108,7 +110,11 @@ public class ReadDataFromCSV {
 					hedgeFund.setSource_type(csvRecord.get(14));
 				}
 
-				hedgeFund.setSource_date(csvRecord.get(15));
+				
+				App app=new App();
+				String formatedDate=app.dateFormation(csvRecord.get(15).toString());
+				hedgeFund.setSource_date(formatedDate);
+				
 				hedgeFund.setNameOfFund(csvRecord.get(16));
 
 				// add one hedge fund row into the arraylist.
