@@ -21,6 +21,7 @@ public class App
 	/*
 	 * date formation method whatever the date is it will
 	 * shopan vaia branchs convert to MySQL default date format
+	 * git pull for shopan vaia 
 	 */
 	public String dateFormation(String toformat){
 		
