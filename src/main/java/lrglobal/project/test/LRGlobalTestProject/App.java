@@ -121,6 +121,12 @@ public class App
         	macroDataManager.Insert(filePath);
         	macroDataManager.exit();
         }
+        else if(command.equalsIgnoreCase("cimd")){
+        	MacroDataManager macroDataManager=new MacroDataManager();
+        	macroDataManager.setup();
+        	macroDataManager.change_calculation();
+        	macroDataManager.exit();
+        }
         else{
         	System.out.println("No operation defined. ");
         }

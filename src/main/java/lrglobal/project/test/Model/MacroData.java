@@ -7,8 +7,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.Table;
 
+
+@NamedNativeQueries({
+	@NamedNativeQuery(
+			name="change_in_macro_data",
+			query ="CALL change_in_macro_data(:q_MacroName)",
+			hints=	@javax.persistence.QueryHint(name = "org.hibernate.callable", value = "true"),
+			resultClass=MacroData.class
+			)	
+})
 @Entity
 @Table(name="macro_data")
 public class MacroData {

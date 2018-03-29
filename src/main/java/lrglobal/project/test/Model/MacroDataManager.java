@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.persistence.Query;
 
@@ -73,7 +74,44 @@ public class MacroDataManager {
     	session.getTransaction().commit();
     	session.close();
     }
-    
+    public void change_calculation(){
+    	Session session = sessionfactory.openSession();
+    	session.beginTransaction();
+    	System.out.println("ENter the MacroName");
+    	Scanner inScanner=new Scanner(System.in);
+    	String mn=inScanner.nextLine();
+    	try{
+    		Query query=session.getNamedQuery("change_in_macro_data").setParameter("q_MacroName", mn);
+        	List<MacroData> rslt=query.getResultList();
+        	//Collections.sort(list,);
+        	int last_index=rslt.size()-1;
+        	Double changeInvalue= ((rslt.get(0).getMacro_value()/rslt.get(last_index).getMacro_value())-1);
+        	
+        	String writeValue= "change in macro value from " +rslt.get(last_index).getDate().toString()+ 
+        			" to "+rslt.get(0).getDate().toString() + " is "+ changeInvalue.toString()+".";
+        	String date_value="In date "+ rslt.get(last_index).getDate().toString()+" the macro value was "+ 
+        			rslt.get(last_index).getMacro_value().toString() + " and in date "+ rslt.get(0).getDate().toString()+
+        			" macro value was " +rslt.get(last_index).getMacro_value().toString()+".";
+        	
+        	File fileName= new File("generate_files\\change_in_macro.txt");
+        	
+        	FileWriter fw=new FileWriter(fileName);
+    		BufferedWriter output=new BufferedWriter(fw);
+    		output.write(writeValue);
+    		output.newLine();
+    		output.write(date_value);
+    		output.close();
+    		
+    	}catch (Exception e) {
+			// TODO: handle exception
+    		
+    		System.out.println("Exception: "+e);
+		}
+    	
+    	
+    	session.getTransaction().commit();
+    	session.close();
+    }
     public void read() {
         // code to get a Data
     	Session session = sessionfactory.openSession();
