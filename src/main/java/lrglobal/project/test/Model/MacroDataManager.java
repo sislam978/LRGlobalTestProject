@@ -92,7 +92,7 @@ public class MacroDataManager {
         	int last_index=rslt.size()-1;
         	Double changeInvalue= ((rslt.get(0).getMacro_value()/rslt.get(last_index).getMacro_value())-1);
         	
-        	String writeValue= "change in macro value from " +rslt.get(last_index).getDate().toString()+ 
+        	String writeValue= "In Ticker "+ rslt.get(0).getMacro_name()+", the change in macro value from " +rslt.get(last_index).getDate().toString()+ 
         			" to "+rslt.get(0).getDate().toString() + " is "+ changeInvalue.toString()+".";
         	String date_value="In date "+ rslt.get(last_index).getDate().toString()+" the macro value was "+ 
         			rslt.get(last_index).getMacro_value().toString() + " and in date "+ rslt.get(0).getDate().toString()+
@@ -103,6 +103,7 @@ public class MacroDataManager {
         	FileWriter fw=new FileWriter(fileName);
     		BufferedWriter output=new BufferedWriter(fw);
     		output.write(writeValue);
+    		output.newLine();
     		output.newLine();
     		output.write(date_value);
     		output.close();

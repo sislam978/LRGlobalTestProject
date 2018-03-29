@@ -77,6 +77,7 @@ public class SectorSumamryManager {
     			//line by line write
     			output.write(rsult.get(i).toString());
     			output.newLine();
+    			output.newLine();
     		}
     		output.close();
     	}catch(Exception e){

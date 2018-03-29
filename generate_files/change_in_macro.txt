@@ -1,2 +1,3 @@
-change in macro value from 2018-01-28 to 2018-01-31 is 0.0.
+In Ticker CPI XYOY Index, the change in macro value from 2018-01-28 to 2018-01-31 is 0.0.
+
 In date 2018-01-28 the macro value was 1.8 and in date 2018-01-31 macro value was 1.8.

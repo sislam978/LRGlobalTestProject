@@ -1,10 +1,20 @@
 SectorSummary [sector_name=INFORMATION TECHNOLOGY, shares_held=2.6089894E8, market_value=4.4345072808E10, change_in_Share=2.6360874E7, net_buy_sell=3.04998280438E10, source_date=2017-12-31]
+
 SectorSummary [sector_name=HEALTH CARE, shares_held=1.65281541E8, market_value=2.510658381669E10, change_in_Share=-1667254.0, net_buy_sell=7.40824072501E9, source_date=2017-12-31]
+
 SectorSummary [sector_name=FINANCE, shares_held=8.31298962E8, market_value=5.6437672935E10, change_in_Share=1.9221215E7, net_buy_sell=1.20118864942E9, source_date=2017-12-31]
+
 SectorSummary [sector_name=REAL ESTATE, shares_held=2.25575352E8, market_value=4.810776437E9, change_in_Share=2.4787724E7, net_buy_sell=1.06978417465E9, source_date=2017-12-31]
+
 SectorSummary [sector_name=COMMUNICATIONS, shares_held=1.30704006E8, market_value=5.593091885E9, change_in_Share=1.4680626E7, net_buy_sell=9.4221968142E8, source_date=2017-12-31]
+
 SectorSummary [sector_name=CONSUMER DISCRETIONARY, shares_held=1.30397754E8, market_value=7.350839203E9, change_in_Share=1.8194975E7, net_buy_sell=5.1275077713E8, source_date=2017-12-31]
+
 SectorSummary [sector_name=UTILITIES, shares_held=7.1445514E7, market_value=2.418515548E9, change_in_Share=3779269.0, net_buy_sell=2.5152443979E8, source_date=2017-12-31]
+
 SectorSummary [sector_name=CONSUMER STAPLES, shares_held=6.781318E7, market_value=4.417979805E9, change_in_Share=4833760.0, net_buy_sell=2.2813685228E8, source_date=2017-12-31]
+
 SectorSummary [sector_name=MATERIALS, shares_held=1.26511646E8, market_value=3.873681518E9, change_in_Share=1.3099922E7, net_buy_sell=2.2667116888E8, source_date=2017-12-31]
+
 SectorSummary [sector_name=ENERGY, shares_held=2.98356162E8, market_value=5.516349897E9, change_in_Share=1.0843386E7, net_buy_sell=2.0764262206E8, source_date=2017-12-31]
+
