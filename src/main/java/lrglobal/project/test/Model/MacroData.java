@@ -18,6 +18,12 @@ import javax.persistence.Table;
 			query ="CALL change_in_macro_data(:q_MacroName,:q_date)",
 			hints=	@javax.persistence.QueryHint(name = "org.hibernate.callable", value = "true"),
 			resultClass=MacroData.class
+			),
+	@NamedNativeQuery(
+			name="one_year_highest_macro",
+			query ="CALL one_year_highest_macro(:q_MacroName,:q_date)",
+			hints=	@javax.persistence.QueryHint(name = "org.hibernate.callable", value = "true"),
+			resultClass=MacroData.class
 			)	
 })
 @Entity

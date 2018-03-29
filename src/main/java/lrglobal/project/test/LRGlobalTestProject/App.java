@@ -127,6 +127,13 @@ public class App
         	macroDataManager.change_calculation();
         	macroDataManager.exit();
         }
+        
+        else if(command.equalsIgnoreCase("oyhm")){
+        	MacroDataManager macroDataManager=new MacroDataManager();
+        	macroDataManager.setup();
+        	macroDataManager.OneYearHighestMacro();
+        	macroDataManager.exit();
+        }
         else{
         	System.out.println("No operation defined. ");
         }

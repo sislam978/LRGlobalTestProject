@@ -112,11 +112,48 @@ public class MacroDataManager {
     		
     		System.out.println("Exception: "+e);
 		}
-    	
-    	
     	session.getTransaction().commit();
     	session.close();
     }
+    
+    public void OneYearHighestMacro(){
+    	Session session = sessionfactory.openSession();
+    	session.beginTransaction();
+    	System.out.println("ENter the MacroName");
+    	Scanner inScanner=new Scanner(System.in);
+    	String mn=inScanner.nextLine();
+    	System.out.println("Enter the date value");
+    	String daString=inScanner.nextLine();
+    	try{
+    		Query query=session.getNamedQuery("one_year_highest_macro")
+    				.setParameter("q_MacroName", mn)
+    				.setParameter("q_date", daString);
+        	List<MacroData> rslt=query.getResultList();
+        	//Collections.sort(list,);
+        	
+        	Double highest_Value= rslt.get(0).getMacro_value();
+        	String date=rslt.get(0).getDate();
+        	
+        	String writeValue= "Highest macro value from " +daString+ 
+        			" to last one year is "+highest_Value+ " and the date in which the macro value was highest is "+date;        	
+        	
+        	File fileName= new File("generate_files\\OneYear_HighestMacro.txt");
+        	
+        	FileWriter fw=new FileWriter(fileName);
+    		BufferedWriter output=new BufferedWriter(fw);
+    		output.write(writeValue);
+    		output.newLine();
+    		output.close();
+    		
+    	}catch (Exception e) {
+			// TODO: handle exception
+    		
+    		System.out.println("Exception: "+e);
+		}
+    	session.getTransaction().commit();
+    	session.close();
+    }
+    
     public void read() {
         // code to get a Data
     	Session session = sessionfactory.openSession();
