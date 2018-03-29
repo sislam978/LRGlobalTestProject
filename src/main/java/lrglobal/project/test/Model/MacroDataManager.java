@@ -17,6 +17,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import lrglobal.project.test.LRGlobalTestProject.App;
 import lrglobal.project.test.LRGlobalTestProject.ReadSelectedMacro;
 
 public class MacroDataManager {
@@ -80,8 +81,12 @@ public class MacroDataManager {
     	System.out.println("ENter the MacroName");
     	Scanner inScanner=new Scanner(System.in);
     	String mn=inScanner.nextLine();
+    	System.out.println("Enter the date value");
+    	String daString=inScanner.nextLine();
     	try{
-    		Query query=session.getNamedQuery("change_in_macro_data").setParameter("q_MacroName", mn);
+    		Query query=session.getNamedQuery("change_in_macro_data")
+    				.setParameter("q_MacroName", mn)
+    				.setParameter("q_date", daString);
         	List<MacroData> rslt=query.getResultList();
         	//Collections.sort(list,);
         	int last_index=rslt.size()-1;

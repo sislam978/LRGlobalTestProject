@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @NamedNativeQueries({
 	@NamedNativeQuery(
 			name="change_in_macro_data",
-			query ="CALL change_in_macro_data(:q_MacroName)",
+			query ="CALL change_in_macro_data(:q_MacroName,:q_date)",
 			hints=	@javax.persistence.QueryHint(name = "org.hibernate.callable", value = "true"),
 			resultClass=MacroData.class
 			)	
