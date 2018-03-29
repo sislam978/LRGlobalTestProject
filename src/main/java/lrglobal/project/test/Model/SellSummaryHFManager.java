@@ -99,6 +99,39 @@ public class SellSummaryHFManager {
     	session.getTransaction().commit();
     	session.close();
     }
+    
+    
+    public void BottomBuySellValues(){
+    	Session session= sessionfactory.openSession();
+    	session.beginTransaction();
+    	/*
+    	 * query for extracting Bottom 10 sell values from the Symbol summary table
+    	 */
+    	String SQL_QUERY="select distinct u from SellSummaryHF u order by u.net_buy_sell asc";
+    	Query query=session.createQuery(SQL_QUERY).setMaxResults(10);
+    	
+    	//Query query=session.getNamedQuery("top_netbuy_sell_symbolSummary");
+    	// returned list value from the table 
+    	List<SellSummaryHF> rsult= query.getResultList();
+    	
+    	//write the resulted list into a text file
+    	File fileName= new File("generate_files\\Bottom_Symbol_NetValues.txt");
+    	try{
+    		FileWriter fw=new FileWriter(fileName);
+    		BufferedWriter output=new BufferedWriter(fw);
+    		
+    		for(int i=0;i<rsult.size();i++){
+    			//line by line write
+    			output.write(rsult.get(i).toString());
+    			output.newLine();
+    		}
+    		output.close();
+    	}catch(Exception e){
+    		System.out.println("The Given Exception is: "+e);
+    	}
+    	session.getTransaction().commit();
+    	session.close();
+    }
  
     public void read() {
         // code to get a Data

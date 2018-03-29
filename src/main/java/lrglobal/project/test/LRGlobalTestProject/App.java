@@ -102,6 +102,15 @@ public class App
         	sellSummaryHFManager.exit();
         }
         /*
+         * showing bottom net buy sell value in symbol summery=sell summary HF
+         */
+        else if(command.equalsIgnoreCase("bnbsv")){
+        	SellSummaryHFManager sellSummaryHFManager=new SellSummaryHFManager();
+        	sellSummaryHFManager.setup();
+        	sellSummaryHFManager.BottomBuySellValues();
+        	sellSummaryHFManager.exit();
+        }
+        /*
          * for showing top net buy sell value in sector summary
          */
         else if(command.equalsIgnoreCase("tnbsvss")){
