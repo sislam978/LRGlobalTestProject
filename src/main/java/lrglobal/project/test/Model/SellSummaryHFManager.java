@@ -113,7 +113,7 @@ public class SellSummaryHFManager {
     	
     	//Query query=session.getNamedQuery("top_netbuy_sell_symbolSummary");
     	// returned list value from the table 
-    	List<SellSummaryHF> rsult= (List<SellSummaryHF>)query.getResultList();
+    	List<SellSummaryHF> rsult= query.getResultList();
     	
     	//write the resulted list into a text file
     	File fileName= new File("generate_files\\Bottom_Symbol_NetValues.txt");
