@@ -72,6 +72,10 @@ public class HedgeFundManager {
     		}
     		//finally save the unique data 
     		session.save(hh);
+    		if(i%250==0){
+    			session.flush();
+    			session.clear();
+    		}
     	}
     	
     	/*
@@ -104,7 +108,7 @@ public class HedgeFundManager {
     	 * In future it might be possible to change the query by introducing a new concept like consider the date so that
     	 * we can reduce the table look up
     	 */
-		Query query=session.createQuery("from HedgeFund");
+		Query query=session.createQuery("from HedgeFund u where u.net_buy_sell is null");
 		List<HedgeFund> list =(List<HedgeFund>) query.getResultList();
 		int list_size = list.size();
 		
@@ -113,7 +117,7 @@ public class HedgeFundManager {
 			double Market_value=list.get(i).getMarketValue();
 			double changeinShare=list.get(i).getChangInshare();
 			double net_buy_Sell= -1;
-			if(share_Held!=0 && list.get(i).getNet_buy_sell()==null){
+			if(share_Held!=0){
 				net_buy_Sell=(Market_value*changeinShare)/share_Held;
 				list.get(i).setNet_buy_sell(net_buy_Sell);
 			}

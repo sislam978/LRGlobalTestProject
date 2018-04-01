@@ -11,6 +11,15 @@
     <property name="connection.password"></property>
     <property name="show_sql">true</property>
     <property name="hibernate.hbm2ddl.auto">update</property>  
+    <property name="hibernate.jdbc.batch_size"> 250 </property>
+    <property name="hibernate.cache.use_second_level_cache">false</property>
+
+	<property name="hibernate.connection.provider_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider</property>
+	<property name="c3p0.min_size">30</property>
+    <property name="c3p0.max_size">70</property>
+    <property name="hibernate.c3p0.timeout">300</property>
+    <property name="hibernate.c3p0.max_statements">50</property>
+    <property name="hibernate.c3p0.idle_test_period">3000</property>
    
    <mapping class="lrglobal.project.test.Model.TestTable" />
    

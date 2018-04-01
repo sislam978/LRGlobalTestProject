@@ -1,6 +1,7 @@
 package lrglobal.project.test.LRGlobalTestProject;
 
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,14 +26,17 @@ public class App
 	 */
 	public String dateFormation(String toformat){
 		
-		SimpleDateFormat input_format= new SimpleDateFormat("mm/dd/yyyy");
+		SimpleDateFormat input_format= new SimpleDateFormat("MM/dd/yyyy");
 		//Date date= new SimpleDateFormat(dateToformat);
 		String formatedDate=null;
+		//String toformat="12/31/2017";
+		
 		Date date;
 		try {
 			date = input_format.parse(toformat);
 			SimpleDateFormat output_format= new SimpleDateFormat("yyyy-MM-dd");
 			formatedDate=output_format.format(date);
+			System.out.println("printed date: "+formatedDate);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
