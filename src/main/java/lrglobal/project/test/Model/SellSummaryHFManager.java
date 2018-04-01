@@ -108,12 +108,12 @@ public class SellSummaryHFManager {
     	/*
     	 * query for extracting Bottom 10 sell values from the Symbol summary table
     	 */
-    	String SQL_QUERY="select distinct u from SellSummaryHF u order by u.net_buy_sell asc";
-    	Query query=session.createQuery(SQL_QUERY).setMaxResults(10);
+    	//String SQL_QUERY="select u from SellSummaryHF u order by u.net_buy_sell asc";
+    	Query query=session.getNamedQuery("bottom_netbuysell_symbol");
     	
     	//Query query=session.getNamedQuery("top_netbuy_sell_symbolSummary");
     	// returned list value from the table 
-    	List<SellSummaryHF> rsult= query.getResultList();
+    	List<SellSummaryHF> rsult= (List<SellSummaryHF>)query.getResultList();
     	
     	//write the resulted list into a text file
     	File fileName= new File("generate_files\\Bottom_Symbol_NetValues.txt");

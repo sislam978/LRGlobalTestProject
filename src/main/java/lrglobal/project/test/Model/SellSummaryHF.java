@@ -19,6 +19,12 @@ import javax.persistence.NamedNativeQueries;
 			query ="CALL top_netbuy_sell_symbolSummary()",
 			hints=	@javax.persistence.QueryHint(name = "org.hibernate.callable", value = "true"),
 			resultClass=SellSummaryHF.class
+			),
+	@NamedNativeQuery(
+			name="bottom_netbuysell_symbol",
+			query ="CALL bottom_netbuysell_symbol()",
+			hints=	@javax.persistence.QueryHint(name = "org.hibernate.callable", value = "true"),
+			resultClass=SellSummaryHF.class
 			)	
 })
 @Entity
